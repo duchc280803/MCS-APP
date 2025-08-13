@@ -1,0 +1,27 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /cms
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/mcs_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ${DB_PASSWORD:congduc003}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+mcs:
+  jwt:
+    publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQ EA1XFuNGWC7zib+4kC2mGtGFeqAd7GeKFZB6RdObNj08ptJdoi1oAIEAOq8k9tp6CAnpEUv+rnYslPaqlAn5wIA+Npq38Kaw0fTvZUJAE6FjHb3x75HS714S8JDRcHufNeZqLq2sT5eeDvlGDWW7+0Fji9P2kPUE2C6p6CynelNUIeUisd39cwhJUE4TlfWXkUaSONSj+BG4B9yaWW9UQi+6FuzKtIYQQsoXseInZrVOHxKV8CRlzFlbDdZyjaw3RkgJTekR2Cq9AIWIYicp+r2PF3yiEkGyIKKCg01uo8PVI0V1Yuj664fH8QCdkZryZwAiCmwNEWPw4/IREovxig1wIDAQAB
+    privateKey: MIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDVcW40ZYLvOJv7iQLaYa0YV6oB3sZ4oVkHpF05s2PTym0l2iLWgAgQA6ryT22noICekRS/6udiyU9qqUCfnAgD42mrfwprDR9O9lQkAToWMdvfHvkdLvXhLwkNFwe5815mouraxPl54O+UYNZbv7QWOL0/aQ9QTYLqnoLKd6U1Qh5SKx3f1zCElQThOV9ZeRRpI41KP4EbgH3JpZb1RCL7oW7Mq0hhBCyhex4idmtU4fEpXwJGXMWVsN1nKNrDdGSAlN6RHYKr0AhYhiJyn6vY8XfKISQbIgooKDTW6jw9UjRXVi6Prrh8fxAJ2RmvJnACIKbA0RY/Dj8hESi/GKDXAgMBAAECggEBAKOn54IRW4Wk+CSzdxaO0jPZ86afc7pGrIbphfmaDK71hR8C1Ld3T7dHuKk2MbPXowbx4uEMcgISrOvxfnVjI9onYnx2WjyewSTARt+ceTdPX3ECxKuVuD3C3MPGpsvzSKyVulGnukmzKL+ySGns4V4wfxrBqVY/OGRAybQIbQoZk7syumgi8m7+5DIWbIAO52pt8o8/+aUYan5PZS+jqySyW3PJSjv66BDhdwOwTPSv2tpd+BImwG4s4kYpOKvxRRbsRGrBLRU44XAP5RkcjdbwDrQMXHbQnRuEDyvDuetGx/ByeZgd5v5GjVhq/uzIBX5jDZ4/U+pLSPFF68OOSYECgYEA7NFT9UionK5h0LrJQAZduIp+dWkFFaI1Pehjicp71zNzJQw01euD3Hd/JFOq5efz1Do5lnQeri+mmlnr63h65eOqjRYCtRbC7vUmBdOsaNVn2QY9sVt8u2rOumD2/kPw9ux8RmqoGQH4rwlDPksgvxc0G0CFVr01ywFCWbwGUqECgYEA5rtnoZTH1p23ICJEesoRLsQi30NoPuGMTG3bexTUsS57QWVjnhzUi7r03+QiZmUR+xhd7WzogBi6odXNTJkqastUaPtYoY2k12YpEyZvlXIj6jRUVyFacFURnIipsvhOcfImSKRkQTVk/ca9iVl9+05OJVbNHh/sLvp9uqL1OHcCgYEAriF5Z6lmedbri6xcoJxNu4zyUWjIWVDtbzj6P+5IQ0PMjdg83XMQgULIlTCEQArfShUKFSwLBy94hJRMGdd8Hp/Z32Xo1bkH2ucdbzlm06rfcj/ZixjnTXPK0FbOJsZUX2wiMTDpq4G8lw/rhtl9GaV5JfS6Vr5H2J5zaEIOMCECgYEA1sFhkJSReGGtm/wpLvy7B4NJTfNIqRZ35n9uBN57pTq1QEYldXoyHqhx2Z5WomW6WbLxYda3hNr/gzgj8QKy51m/hENF2IClCFOvMYLZ4witAwWX5s1Fhz62uLK++LSDFy2ikoRoSAVxrX941Ml2KB1XQQvMuRhPVd6Sfc/FXLsCgYAU8DeWzO9m/4vwtuJP2RKmogEs3YcWs7h+k0BIA8RQ367sopQP+cs5uCHn5Mo/AvIUzNWDVBZ4l5GNuFGOyglxfbQ1jdWz7OEIBJjNPW+oG3TXxKgg1YX/NS/gzhOZ6J0OCBjZh8KTpTe9d1Dav6HUKhhNGCjaFQfJ7yMoHYnkNw==
+    expiration: 86400000
