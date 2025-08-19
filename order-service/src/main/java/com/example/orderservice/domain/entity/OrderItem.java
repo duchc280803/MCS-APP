@@ -1,17 +1,20 @@
-package com.example.orderservice.entity;
+package com.example.orderservice.domain.entity;
 
+import com.example.orderservice.domain.shared.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "order_items")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class OrderItem {
+@SuperBuilder
+public class OrderItem extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,14 +28,11 @@ public class OrderItem {
     private String productId;
 
     @Column(nullable = false)
-    private String productName;
-
-    @Column(nullable = false)
-    private int quantity;
+    private Integer quantity;
 
     @Column(nullable = false)
     private BigDecimal unitPrice;
 
     @Column(nullable = false)
-    private BigDecimal totalPrice;
+    private BigDecimal totalAmount;
 }

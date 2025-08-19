@@ -1,24 +1,30 @@
-package com.example.orderservice.entity;
+package com.example.orderservice.domain.entity;
 
+import com.example.orderservice.domain.shared.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "orders")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Order {
+@SuperBuilder
+public class Order extends BaseEntity {
 
     @Id
     @Column(nullable = false, updatable = false)
     private String id = UUID.randomUUID().toString();
+
+    @Column(nullable = false)
+    private String orderCode;
 
     @Column(nullable = false)
     private String customerId;
@@ -55,19 +61,13 @@ public class Order {
     private BigDecimal discount;
 
     @Column(nullable = false)
-    private String paymentMethod; // COD, CREDIT_CARD, VNPAY, etc.
+    private String paymentMethod;
 
     @Column(nullable = false)
     private boolean isPaid;
 
     @Column
     private LocalDateTime paidAt;
-
-    @Column(nullable = false)
-    private LocalDateTime createdAt;
-
-    @Column
-    private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items;

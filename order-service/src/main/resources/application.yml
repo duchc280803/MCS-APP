@@ -15,10 +15,15 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
-      group-id: my-group
+      group-id: mcs-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  data:
+    redis:
+      host: redis-10472.c262.us-east-1-3.ec2.redns.redis-cloud.com
+      port: 10472
+      password: hSmwwJWlHd9JG6xO1r59tfYRnpUGpQIX

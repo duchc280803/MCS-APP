@@ -1,7 +1,7 @@
 package com.example.inventoryservice.consumer;
 
 import com.example.inventoryservice.dto.OrderEvent;
-import com.example.inventoryservice.entity.Inventory;
+import com.example.inventoryservice.entity.InventoryItem;
 import com.example.inventoryservice.producer.MessageProducer;
 import com.example.inventoryservice.repository.InventoryRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,11 +26,11 @@ public class KafkaConsumer {
             System.out.println("Nhận đơn hàng: " + event.getOrderId());
 
             // Kiểm tra tồn kho
-            Optional<Inventory> item = inventoryRepository.findByProductId(event.getProductId());
+            Optional<InventoryItem> item = inventoryRepository.findByProductId(event.getProductId());
             if (item.isPresent()) {
-                Inventory inventory = item.get();
-                if (inventory.getQuantityAvailable() >= event.getQuantity()) {
-                    inventory.setQuantityAvailable(inventory.getQuantityAvailable() - event.getQuantity());
+                InventoryItem inventory = item.get();
+                if (inventory.getReservedQuantity() >= event.getQuantity()) {
+                    inventory.setReservedQuantity(inventory.getAvailableQuantity() - event.getQuantity());
                     inventoryRepository.save(inventory);
                     System.out.println("✔ Đã giữ hàng cho order " + event.getOrderId());
 

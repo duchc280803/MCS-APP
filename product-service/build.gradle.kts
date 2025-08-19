@@ -7,16 +7,11 @@ plugins {
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
+description = "product-service"
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
     }
 }
 
@@ -28,7 +23,6 @@ dependencies {
     // Spring Boot
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.kafka:spring-kafka")
 
     // Lombok
     compileOnly("org.projectlombok:lombok")
@@ -54,8 +48,6 @@ dependencies {
 
     // Provided runtime Tomcat cho WAR
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
-    implementation("redis.clients:jedis")
 }
 
 tasks.withType<Test> {
